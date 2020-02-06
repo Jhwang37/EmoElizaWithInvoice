@@ -7,8 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class EmoEliza {
+public class EmoEliza extends  Invoice {
     Scanner scan = new Scanner(System.in);
+    private double sum = 100;
     private int positiveCount = 0;
     private int negativeCount = 0;
     private String feeling;
@@ -23,6 +24,14 @@ public class EmoEliza {
         System.out.println("Welcome to Raven APP");
         feelings();
 
+    }
+    public void invoiceTotal(int positiveCount, int negativeCount){
+        int totalCount = positiveCount + negativeCount;
+        for (int i = 0; i <= totalCount; i++){
+            sum += .50;
+        }
+        System.out.println("Total due:  " + sum);
+        System.out.println("Thank you for doing business with Eliza");
     }
 
     public void printResponses(ArrayList<String> allResponses) {
@@ -49,6 +58,8 @@ public class EmoEliza {
             }
         }
         ravenResponse(positiveCount, negativeCount);
+        getInfo();
+        invoiceTotal(positiveCount, negativeCount);
 
     }
 
